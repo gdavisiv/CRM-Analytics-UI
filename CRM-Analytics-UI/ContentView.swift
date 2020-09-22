@@ -23,7 +23,14 @@ struct Home: View {
     var body: some View {
         VStack{
             HStack{
-                Image(systemName: "line.horizontal.3")
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                    
+                    Image(systemName: "line.horizontal.3")
+                        .renderingMode(.template)
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    
+                }
+
             }
             .padding()
             
