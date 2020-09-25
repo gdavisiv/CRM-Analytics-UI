@@ -43,6 +43,7 @@ struct Home: View {
             }
             .padding()
             
+            //Sub Menu
             HStack{
                 Text("Dashboard")
                     .font(.title2)
