@@ -67,11 +67,16 @@ struct Home: View {
 struct TabButton : View {
     @Binding var selected : String
     var title : String
+    var animation : Namespace.ID
     
     var body: some View {
         Button(action: {}) {
             ZStack{
                 //Capsule + Sliding Effect
+                Capsule()
+                    .fill(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                    .frame(height: 45)
+                    .matchedGeometryEffect(id: title, in: animation)
             }
         }
     }
