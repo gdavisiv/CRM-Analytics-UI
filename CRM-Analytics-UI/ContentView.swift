@@ -54,8 +54,25 @@ struct Home: View {
             }
             .padding()
             
-            Spacer()
+            HStack(spacing: 0) {
+                
+            }
+            
+            Spacer(minLength: 0)
         }
         .background(Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
+    }
+}
+
+struct TabButton : View {
+    @Binding var selected : String
+    var title : String
+    
+    var body: some View {
+        Button(action: {}) {
+            ZStack{
+                //Capsule + Sliding Effect
+            }
+        }
     }
 }
