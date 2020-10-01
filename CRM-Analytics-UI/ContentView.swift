@@ -25,6 +25,11 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct Home: View {
+    
+    @State var tab = "USA"
+    @Namespace var animation
+    
+    
     var body: some View {
         VStack{
             HStack{
@@ -61,7 +66,11 @@ struct Home: View {
             
             HStack(spacing: 0) {
                 
+                TabButton(selected: $tab, title: "USA", animation: animation)
+                TabButton(selected: $tab, title: "Global", animation: animation)
+                
             }
+            
             
             Spacer(minLength: 0)
         }
@@ -75,13 +84,26 @@ struct TabButton : View {
     var animation : Namespace.ID
     
     var body: some View {
-        Button(action: {}) {
+        Button(action: {
+            withAnimation(.spring()){
+                selected = title
+            }
+        }) {
             ZStack{
                 //Capsule + Sliding Effect
                 Capsule()
                     .fill(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
                     .frame(height: 45)
-                    .matchedGeometryEffect(id: title, in: animation)
+                    
+                if selected == title{
+                    Capsule()
+                        .fill(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                        .frame(height: 45)
+                        .matchedGeometryEffect(id: title, in: animation)
+                }
+                Text(title)
+                    .foregroundColor(selected == title ? .black : .white)
+                    .fontWeight(.bold)
             }
         }
     }
