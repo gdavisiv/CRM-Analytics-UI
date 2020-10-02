@@ -94,7 +94,8 @@ struct TabButton : View {
             ZStack{
                 //Capsule + Sliding Effect
                 Capsule()
-                    .fill(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                    //Color.clear creats the right effect needed to give sliding Illusion
+                    .fill(Color.clear)
                     .frame(height: 45)
                     
                 if selected == title{
