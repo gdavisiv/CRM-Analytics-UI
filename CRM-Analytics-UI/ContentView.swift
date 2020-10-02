@@ -70,7 +70,9 @@ struct Home: View {
                 TabButton(selected: $tab, title: "Global", animation: animation)
                 
             }
-            
+            .background(Color.white.opacity(0.8))
+            .clipShape(Capsule())
+            .padding(.horizontal)
             
             Spacer(minLength: 0)
         }
@@ -99,7 +101,7 @@ struct TabButton : View {
                     Capsule()
                         .fill(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
                         .frame(height: 45)
-                        .matchedGeometryEffect(id: title, in: animation)
+                        .matchedGeometryEffect(id: "Tab", in: animation)
                 }
                 Text(title)
                     .foregroundColor(selected == title ? .black : .white)
