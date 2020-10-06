@@ -75,6 +75,16 @@ struct Home: View {
             .clipShape(Capsule())
             .padding(.horizontal)
             
+            HStack(spacing: 20){
+                ForEach(subTabs,id: \.self){tab in
+                    Button(action: {subTab = tab}) {
+                        Text(tab)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(subTab == tab ? 1 : 0.3))
+                    }
+                }
+            }
+            
             Spacer(minLength: 0)
         }
         .background(Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
