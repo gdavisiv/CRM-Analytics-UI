@@ -138,10 +138,10 @@ struct Sales : Identifiable {
 
 var salesData = [
     Sales(title: "Sold", value: "18,802", color: Color.orange),
-    Sales(title: "Sold", value: "18,802", color: Color.red),
-    Sales(title: "Sold", value: "18,802", color: Color.red),
-    Sales(title: "Sold", value: "18,802", color: Color.red),
-    Sales(title: "Sold", value: "18,802", color: Color.red)
+    Sales(title: "Returned", value: "1,302", color: Color.red),
+    Sales(title: "Delivered", value: "18,802", color: Color.blue),
+    Sales(title: "In Transit", value: "2,230", color: Color.purple),
+    Sales(title: "Cancelled", value: "1,262", color: Color.yellow)
 ]
 
 struct SalesView : View {
