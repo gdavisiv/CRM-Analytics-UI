@@ -84,6 +84,8 @@ struct Home: View {
                     }
                 }
             }
+            .padding()
+            
             
             Spacer(minLength: 0)
         }
