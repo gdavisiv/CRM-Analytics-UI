@@ -126,3 +126,34 @@ struct TabButton : View {
         }
     }
 }
+
+//Sample Model Data
+
+struct Sales : Identifiable {
+    var id = UUID().uuidString
+    var title : String
+    var value : String
+    var color : Color
+}
+
+var salesData = [
+    Sales(title: "Sold", value: "18,802", color: Color.orange),
+    Sales(title: "Sold", value: "18,802", color: Color.red),
+    Sales(title: "Sold", value: "18,802", color: Color.red),
+    Sales(title: "Sold", value: "18,802", color: Color.red),
+    Sales(title: "Sold", value: "18,802", color: Color.red)
+]
+
+struct SalesView : View {
+    var sale : Sales
+    var body: some View {
+        ZStack{
+            sale.color
+            HStack{
+                VStack(alignment: .leading, spacing: 22) {
+                    Text(sale.title)
+                }
+            }
+        }
+    }
+}
