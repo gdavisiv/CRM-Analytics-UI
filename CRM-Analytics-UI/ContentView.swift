@@ -86,6 +86,22 @@ struct Home: View {
             }
             .padding()
             
+            VStack(spacing: 20){
+                HStack(spacing: 15){
+                    SalesView(sale: salesData[0])
+                    
+                    SalesView(sale: salesData[1])
+                }
+                
+                HStack(spacing: 15){
+                    SalesView(sale: salesData[2])
+                    
+                    SalesView(sale: salesData[3])
+                    
+                    SalesView(sale: salesData[4])
+                }
+            }
+            .padding(.top)
             
             Spacer(minLength: 0)
         }
@@ -137,11 +153,11 @@ struct Sales : Identifiable {
 }
 
 var salesData = [
-    Sales(title: "Sold", value: "18,802", color: Color.orange),
+    Sales(title: "Sold", value: "18,802", color: Color.green),
     Sales(title: "Returned", value: "1,302", color: Color.red),
     Sales(title: "Delivered", value: "18,802", color: Color.blue),
     Sales(title: "In Transit", value: "2,230", color: Color.purple),
-    Sales(title: "Cancelled", value: "1,262", color: Color.yellow)
+    Sales(title: "Cancelled", value: "1,262", color: Color.orange)
 ]
 
 struct SalesView : View {
@@ -164,5 +180,6 @@ struct SalesView : View {
             }
             .padding()
         }
+        .cornerRadius(10)
     }
 }
