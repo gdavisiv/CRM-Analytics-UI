@@ -152,8 +152,17 @@ struct SalesView : View {
             HStack{
                 VStack(alignment: .leading, spacing: 22) {
                     Text(sale.title)
+                        .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                    
+                    Text(sale.value)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
                 }
+                
+                Spacer(minLength: 0)
             }
+            .padding()
         }
     }
 }
