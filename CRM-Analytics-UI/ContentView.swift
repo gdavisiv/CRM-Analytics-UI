@@ -103,7 +103,9 @@ struct Home: View {
             }
             .padding(.top)
             
-            Spacer(minLength: 0)
+            Color.white
+                .ignoresSafeArea(.all, edges: .bottom)
+                .padding(.top)
         }
         .background(Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
     }
@@ -181,5 +183,11 @@ struct SalesView : View {
             .padding()
         }
         .cornerRadius(10)
+    }
+}
+
+struct CustomCorners : Shape {
+    func path(in rect: CGRect) -> Path {
+        
     }
 }
