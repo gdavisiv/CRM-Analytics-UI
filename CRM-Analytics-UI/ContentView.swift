@@ -129,12 +129,12 @@ struct TabButton : View {
                 //Capsule + Sliding Effect
                 Capsule()
                     //Color.clear creats the right effect needed to give sliding Illusion
-                    .fill(Color.clear)
+                    .fill(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.1))
                     .frame(height: 45)
                     
                 if selected == title{
                     Capsule()
-                        .fill(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                        .fill(Color(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)))
                         .frame(height: 45)
                         .matchedGeometryEffect(id: "Tab", in: animation)
                 }
@@ -168,7 +168,6 @@ struct SalesView : View {
     var sale : Sales
     var body: some View {
         ZStack{
-            sale.color
             HStack{
                 VStack(alignment: .leading, spacing: 22) {
                     Text(sale.title)
@@ -184,6 +183,7 @@ struct SalesView : View {
             }
             .padding()
         }
+        .background(sale.color)
         .cornerRadius(10)
     }
 }
