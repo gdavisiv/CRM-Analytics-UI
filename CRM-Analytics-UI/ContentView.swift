@@ -102,9 +102,11 @@ struct Home: View {
                 }
             }
             .padding(.top)
+            .padding(.horizontal)
             
             Color.white
-                .ignoresSafeArea(.all, edges: .bottom)
+                .clipShape(CustomCorners(corners: [.topLeft,.topRight], size: 45))
+                .edgesIgnoringSafeArea(.all)
                 .padding(.top)
         }
         .background(Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
@@ -187,7 +189,13 @@ struct SalesView : View {
 }
 
 struct CustomCorners : Shape {
+    
+    var corners : UIRectCorner
+    var size : CGFloat
     func path(in rect: CGRect) -> Path {
+         
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: size, height: size))
         
+        return Path(path.cgPath)
     }
 }
