@@ -164,6 +164,20 @@ var salesData = [
     Sales(title: "Cancelled", value: "1,262", color: Color.orange)
 ]
 
+//Model Data for units sold/etc
+
+struct DailySales : Identifiable {
+    var id = UUID().uuidString
+    var day : Date
+    var value : CGFloat
+    var show : Bool
+}
+
+var dailySales = [
+    DailySales(day)
+
+]
+
 struct SalesView : View {
     var sale : Sales
     var body: some View {
