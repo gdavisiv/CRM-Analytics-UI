@@ -174,8 +174,13 @@ struct DailySales : Identifiable {
 }
 
 var dailySales = [
-    DailySales(day)
-
+    DailySales(day: Calendar.current.date(byAdding: .day, value: -6, to: Date())!, value: 200, show: true),
+    DailySales(day: Calendar.current.date(byAdding: .day, value: -5, to: Date())!, value: 723, show: false),
+    DailySales(day: Calendar.current.date(byAdding: .day, value: -4, to: Date())!, value: 346, show: false),
+    DailySales(day: Calendar.current.date(byAdding: .day, value: -3, to: Date())!, value: 525, show: false),
+    DailySales(day: Calendar.current.date(byAdding: .day, value: -2, to: Date())!, value: 124, show: false),
+    DailySales(day: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, value: 220, show: false),
+    DailySales(day: Date(), value: 669, show: false)
 ]
 
 struct SalesView : View {
