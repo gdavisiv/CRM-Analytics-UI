@@ -131,7 +131,7 @@ struct Home: View {
                     
                     HStack(spacing: 0){
                         ForEach(dailySales.indices){
-                            
+                            //Toggle Button
                         }
                     }
                 }
@@ -236,5 +236,20 @@ struct CustomCorners : Shape {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: size, height: size))
         
         return Path(path.cgPath)
+    }
+}
+
+struct GraphView : View {
+    var data : DailySales
+    
+    var body: some View {
+        VStack {
+            Text(customDataStyle(date: data.day))
+        }
+    }
+    func customDataStyle(date: Date)->String{
+        let format = DateFormatter()
+        format.dateFormat = "MMM dd"
+        return format.string(from: date)
     }
 }
