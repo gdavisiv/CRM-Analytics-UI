@@ -29,6 +29,16 @@ struct Home: View {
     @State var tab = "USA"
     @Namespace var animation
     @State var subTab = "Today"
+    @State var dailySales = [
+        //Last 7 Days of Data stored here
+        DailySales(day: Calendar.current.date(byAdding: .day, value: -6, to: Date())!, value: 200, show: true),
+        DailySales(day: Calendar.current.date(byAdding: .day, value: -5, to: Date())!, value: 723, show: false),
+        DailySales(day: Calendar.current.date(byAdding: .day, value: -4, to: Date())!, value: 346, show: false),
+        DailySales(day: Calendar.current.date(byAdding: .day, value: -3, to: Date())!, value: 525, show: false),
+        DailySales(day: Calendar.current.date(byAdding: .day, value: -2, to: Date())!, value: 124, show: false),
+        DailySales(day: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, value: 220, show: false),
+        DailySales(day: Date(), value: 669, show: false)
+    ]
     
     
     var body: some View {
@@ -104,10 +114,30 @@ struct Home: View {
             .padding(.top)
             .padding(.horizontal)
             
-            Color.white
-                .clipShape(CustomCorners(corners: [.topLeft,.topRight], size: 45))
-                .edgesIgnoringSafeArea(.all)
-                .padding(.top)
+            ZStack {
+                Color.white
+                    .clipShape(CustomCorners(corners: [.topLeft,.topRight], size: 45))
+                    .edgesIgnoringSafeArea(.all)
+                VStack{
+                    HStack{
+                        Text("Units Sold in past 7 Days")
+                            .font(.title2)
+                            .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    .padding(.top,20)
+                    
+                    HStack(spacing: 0){
+                        ForEach(dailySales.indices){
+                            
+                        }
+                    }
+                }
+            }
+            .padding(.top)
+            .padding(.horizontal)
         }
         .background(Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
     }
@@ -172,16 +202,6 @@ struct DailySales : Identifiable {
     var value : CGFloat
     var show : Bool
 }
-
-var dailySales = [
-    DailySales(day: Calendar.current.date(byAdding: .day, value: -6, to: Date())!, value: 200, show: true),
-    DailySales(day: Calendar.current.date(byAdding: .day, value: -5, to: Date())!, value: 723, show: false),
-    DailySales(day: Calendar.current.date(byAdding: .day, value: -4, to: Date())!, value: 346, show: false),
-    DailySales(day: Calendar.current.date(byAdding: .day, value: -3, to: Date())!, value: 525, show: false),
-    DailySales(day: Calendar.current.date(byAdding: .day, value: -2, to: Date())!, value: 124, show: false),
-    DailySales(day: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, value: 220, show: false),
-    DailySales(day: Date(), value: 669, show: false)
-]
 
 struct SalesView : View {
     var sale : Sales
