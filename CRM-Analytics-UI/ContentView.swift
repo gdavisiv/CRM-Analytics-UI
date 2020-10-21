@@ -244,7 +244,15 @@ struct GraphView : View {
     
     var body: some View {
         VStack {
-            Text(customDataStyle(date: data.day))
+            GeometryReader{reader in
+                VStack{
+                    Spacer()
+                        Text("\(Int(data.value))")
+                }
+            }
+                Text(customDataStyle(date: data.day))
+                    .font(.caption2)
+                    .foregroundColor(Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)))
         }
     }
     func customDataStyle(date: Date)->String{
