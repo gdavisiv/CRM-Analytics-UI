@@ -129,11 +129,14 @@ struct Home: View {
                     .padding(.horizontal)
                     .padding(.top,20)
                     
-                    HStack(spacing: 0){
-                        ForEach(dailySales.indices){
+                    HStack(spacing: 10){
+                        ForEach(dailySales.indices,id: \.self){i in
                             //Toggle Button
+                            GraphView(data: dailySales[i], allData: dailySales)
                         }
+                        //.padding()
                     }
+                    .padding()
                 }
             }
             .padding(.top)
@@ -240,14 +243,26 @@ struct CustomCorners : Shape {
 }
 
 struct GraphView : View {
+    
     var data : DailySales
+    var allData : [DailySales]
     
     var body: some View {
         VStack {
             GeometryReader{reader in
-                VStack{
-                    Spacer()
+                VStack(spacing: 0){
+                    
+                    Spacer(minLength: 0)
+                    
                         Text("\(Int(data.value))")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .frame(height: 20)
+
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(Color.red.opacity(data.show ? 1 : 0.4))
+                            .frame(height: calculateHeight(value: data.value, height: reader.frame(in: .global).height - 20))
                 }
             }
                 Text(customDataStyle(date: data.day))
@@ -259,5 +274,15 @@ struct GraphView : View {
         let format = DateFormatter()
         format.dateFormat = "MMM dd"
         return format.string(from: date)
+    }
+    
+    func calculateHeight(value: CGFloat, height: CGFloat)->CGFloat{
+        let max = allData.max {(max, sale) -> Bool in
+            if max.value > sale.value{return false}
+            else{return true}
+        }
+        let percent = value / max!.value
+        
+        return percent * height
     }
 }
