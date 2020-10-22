@@ -133,6 +133,15 @@ struct Home: View {
                         ForEach(dailySales.indices,id: \.self){i in
                             //Toggle Button
                             GraphView(data: dailySales[i], allData: dailySales)
+                                .onTapGesture {
+                                    withAnimation{
+                                        for index in 0..<dailySales.count{
+                                            dailySales[index].show = false
+                                        }
+                                        
+                                        dailySales[i].show.toggle()
+                                    }
+                                }
                             
                             //Spacing for Graphs
                             if dailySales[i].value != dailySales.last!.value{
@@ -140,7 +149,7 @@ struct Home: View {
                             }
                         }
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 15)
                     .padding(.bottom,edges!.bottom == 0 ? 15 : 0)
                 }
             }
@@ -264,6 +273,7 @@ struct GraphView : View {
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .frame(height: 20)
+                            .opacity(data.show ? 1 : 0)
 
                         RoundedRectangle(cornerRadius: 5)
                             .fill(Color.red.opacity(data.show ? 1 : 0.4))
