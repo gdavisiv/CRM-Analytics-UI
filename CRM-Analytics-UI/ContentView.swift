@@ -1,4 +1,4 @@
-//  05:20:00
+//  13:44:00
 //  ContentView.swift
 //  CRM-Analytics-UI
 //
@@ -39,7 +39,7 @@ struct Home: View {
         DailySales(day: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, value: 220, show: false),
         DailySales(day: Date(), value: 669, show: false)
     ]
-    
+    @State var edges = UIApplication.shared.windows.first?.safeAreaInsets
     
     var body: some View {
         VStack{
