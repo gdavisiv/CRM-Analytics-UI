@@ -133,10 +133,15 @@ struct Home: View {
                         ForEach(dailySales.indices,id: \.self){i in
                             //Toggle Button
                             GraphView(data: dailySales[i], allData: dailySales)
+                            
+                            //Spacing for Graphs
+                            if dailySales[i].value != dailySales.last!.value{
+                                Spacer(minLength: 0)
+                            }
                         }
-                        //.padding()
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.bottom,edges!.bottom == 0 ? 15 : 0)
                 }
             }
             .padding(.top)
