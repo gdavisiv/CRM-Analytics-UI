@@ -9,8 +9,8 @@ This project is a Demo to better understand the new Swift UI Syntax, and Design 
 ### Screenshots
 
 <p align="center">
-<img src="https://github.com/gdavisiv/PhotoJournal/blob/main/J1.png" height="600" width="300">
-<img src="https://github.com/gdavisiv/PhotoJournal/blob/main/J2.png" height="600" width="300">
+<img src="https://github.com/gdavisiv/CRM-Analytics-UI/blob/main/CRM1.png" height="600" width="300">
+<img src="https://github.com/gdavisiv/CRM-Analytics-UI/blob/main/CRM2.png" height="600" width="300">
 </p>
 
 ### Prerequisites
